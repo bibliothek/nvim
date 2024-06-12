@@ -205,7 +205,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Autosave
 --
 --
-vim.api.nvim_create_autocmd('FocusLost,TextChanged,TextChangedI', {
+vim.api.nvim_create_autocmd({'FocusLost','TextChanged','TextChangedI'}, {
   desc = 'Autosave on TextChanged or FocusLost',
   group = vim.api.nvim_create_augroup('Autosave', { clear = true }),
   callback = function()
