@@ -587,7 +587,10 @@ require('lazy').setup({
         --tsserver = {},
         --
         powershell_es = {},
-
+        azure_pipelines_ls = {},
+        yamlls = {},
+        csharp_ls = {},
+        terraformls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
