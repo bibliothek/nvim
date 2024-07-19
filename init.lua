@@ -205,7 +205,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Autosave
 --
 --
-vim.api.nvim_create_autocmd({'FocusLost','TextChanged','TextChangedI'}, {
+vim.api.nvim_create_autocmd({ 'FocusLost', 'TextChanged', 'TextChangedI' }, {
   desc = 'Autosave on TextChanged or FocusLost',
   group = vim.api.nvim_create_augroup('Autosave', { clear = true }),
   callback = function()
@@ -587,7 +587,19 @@ require('lazy').setup({
         --tsserver = {},
         --
         powershell_es = {},
-        azure_pipelines_ls = {},
+        azure_pipelines_ls = { 
+          root_dir = require('lspconfig').util.find_git_ancestor,
+          settings = {
+            yaml = {
+              schemas = {
+                ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
+                  "/azure-pipeline*.y*l",
+                  "**/azure-pipelines/**/*.y*l",
+                }
+              }
+            }
+          }
+        },
         yamlls = {},
         csharp_ls = {},
         terraformls = {},
