@@ -171,7 +171,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -225,6 +225,13 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+
+-- Set pwsh on Windows
+if vim.fn.has("win32") then
+  vim.opt.shell = "pwsh"
+end
+
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -239,6 +246,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-fugitive',
   'ionide/Ionide-vim',
 
   -- NOTE: Plugins can also be added by using a table,
@@ -587,7 +595,7 @@ require('lazy').setup({
         --tsserver = {},
         --
         powershell_es = {},
-        azure_pipelines_ls = { 
+        azure_pipelines_ls = {
           root_dir = require('lspconfig').util.find_git_ancestor,
           settings = {
             yaml = {
