@@ -237,6 +237,11 @@ if vim.fn.has("win32") then
 end
 
 
+--disable netrw
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -318,6 +323,27 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require("nvim-tree").setup({
+        view = {
+          width = 80
+        }
+      })
+    end,
+    keys = {
+      {
+        '<leader>l',
+        function()
+          require('nvim-tree.api').tree.toggle({ find_file = true, open = true })
+        end,
+        mode = '',
+        desc = 'Toggle File Tree',
+
+      },
+    },
+  },
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
