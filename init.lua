@@ -331,6 +331,11 @@ require('lazy').setup({
       require("nvim-tree").setup({
         view = {
           width = 80
+        },
+        actions = {
+          open_file = {
+            quit_on_open = true
+          }
         }
       })
     end,
