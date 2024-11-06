@@ -215,7 +215,7 @@ vim.api.nvim_create_autocmd({ 'FocusLost', 'TextChanged', 'TextChangedI' }, {
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'helm',
-  command = 'LspRestart'
+  command = 'LspRestart',
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -230,17 +230,15 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Set pwsh on Windows
-if vim.fn.has("win32") then
-  vim.opt.shell = "pwsh"
-  vim.opt.shellxquote=''
+if vim.fn.has 'win32' then
+  vim.opt.shell = 'pwsh'
+  vim.opt.shellxquote = ''
   vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
-  vim.opt.shellquote   = ''
-  vim.opt.shellpipe    = '| Out-File -Encoding UTF8 %s'
-  vim.opt.shellredir   = '| Out-File -Encoding UTF8 %s'
+  vim.opt.shellquote = ''
+  vim.opt.shellpipe = '| Out-File -Encoding UTF8 %s'
+  vim.opt.shellredir = '| Out-File -Encoding UTF8 %s'
 end
-
 
 --disable netrw
 
@@ -328,26 +326,32 @@ require('lazy').setup({
   {
     'nvim-tree/nvim-tree.lua',
     config = function()
-      require("nvim-tree").setup({
+      require('nvim-tree').setup {
         view = {
-          width = 80
+          width = 80,
+        },
+        experimental = {
+          actions = {
+            open_file = {
+              relative_path = true,
+            },
+          },
         },
         actions = {
           open_file = {
-            quit_on_open = true
-          }
-        }
-      })
+            quit_on_open = true,
+          },
+        },
+      }
     end,
     keys = {
       {
         '<leader>l',
         function()
-          require('nvim-tree.api').tree.toggle({ find_file = true, open = true })
+          require('nvim-tree.api').tree.toggle { find_file = true, open = true }
         end,
         mode = '',
         desc = 'Toggle File Tree',
-
       },
     },
   },
@@ -639,13 +643,13 @@ require('lazy').setup({
           settings = {
             yaml = {
               schemas = {
-                ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
-                  "/azure-pipeline*.y*l",
-                  "**/azure-pipelines/**/*.y*l",
-                }
-              }
-            }
-          }
+                ['https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json'] = {
+                  '/azure-pipeline*.y*l',
+                  '**/azure-pipelines/**/*.y*l',
+                },
+              },
+            },
+          },
         },
         yamlls = {},
         csharp_ls = {},
@@ -917,7 +921,7 @@ require('lazy').setup({
 
       -- Prefer git instead of curl in order to improve connectivity in some environments
       require('nvim-treesitter.install').prefer_git = false
-      require('nvim-treesitter.install').compilers = { "zig", "gcc",  "clang" }
+      require('nvim-treesitter.install').compilers = { 'zig', 'gcc', 'clang' }
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
 
