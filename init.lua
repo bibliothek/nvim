@@ -330,13 +330,6 @@ require('lazy').setup({
         view = {
           width = 80,
         },
-        experimental = {
-          actions = {
-            open_file = {
-              relative_path = true,
-            },
-          },
-        },
         actions = {
           open_file = {
             quit_on_open = true,
