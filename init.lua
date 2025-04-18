@@ -631,19 +631,19 @@ require('lazy').setup({
         --
         powershell_es = {},
         helm_ls = {},
-        azure_pipelines_ls = {
-          root_dir = require('lspconfig').util.find_git_ancestor,
-          settings = {
-            yaml = {
-              schemas = {
-                ['https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json'] = {
-                  '/azure-pipeline*.y*l',
-                  '**/azure-pipelines/**/*.y*l',
-                },
-              },
-            },
-          },
-        },
+        -- azure_pipelines_ls = {
+        --   root_dir = require('lspconfig').util.find_git_ancestor,
+        --   settings = {
+        --     yaml = {
+        --       schemas = {
+        --         ['https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json'] = {
+        --           '/azure-pipeline*.y*l',
+        --           '**/azure-pipelines/**/*.y*l',
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
         yamlls = {},
         csharp_ls = {},
         terraformls = {},
