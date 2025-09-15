@@ -14,7 +14,7 @@ return {
   end,
   keys = {
     {
-      '<leader>l',
+      '<leader>e',
       function()
         require('nvim-tree.api').tree.toggle { find_file = true, open = true }
       end,
