@@ -25,11 +25,9 @@ return {
 
         map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
 
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        map('<leader>cs', require('telescope.builtin').lsp_document_symbols, '[C]ode [S]ymbols')
 
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -62,9 +60,9 @@ return {
         end
 
         if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-          map('<leader>th', function()
+          map('<leader>H', function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-          end, '[T]oggle Inlay [H]ints')
+          end, 'Toggle Inlay [H]ints')
         end
       end,
     })
