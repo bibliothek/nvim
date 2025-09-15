@@ -559,6 +559,7 @@ require('lazy').setup({
         --   },
         -- },
         yamlls = {},
+        fsautocomplete = {},
         csharp_ls = {},
         terraformls = {},
         lua_ls = {
