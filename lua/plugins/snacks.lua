@@ -26,6 +26,10 @@ return {
     vim.keymap.set('n', '<leader>fr', function() pick.recent() end, { desc = 'Recent' })
     vim.keymap.set('n', '<leader>fR', function() pick.recent({ cwd = true }) end, { desc = 'Recent (cwd)' })
 
+    -- Buffer management
+    vim.keymap.set('n', '<leader>bd', '<cmd>bd<cr>', { desc = 'Close Current Buffer' })
+    vim.keymap.set('n', '<leader>bo', '<cmd>%bd|e#<cr>', { desc = 'Close Other Buffers' })
+
     -- Git
     vim.keymap.set('n', '<leader>gb', function() pick.git_branches() end, { desc = 'Git Branches' })
     vim.keymap.set('n', '<leader>gc', function() pick.git_log() end, { desc = 'Git Commits' })
