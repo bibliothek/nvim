@@ -27,11 +27,11 @@ return {
 
         map('<leader>cs', function() require('snacks').picker.lsp_symbols() end, '[C]ode [S]ymbols')
 
-        map('<leader>ws', function() require('snacks').picker.lsp_symbols({ workspace = true }) end, '[W]orkspace [S]ymbols')
+        map('gW', function() require('snacks').picker.lsp_symbols({ workspace = true }) end, '[W]orkspace Symbols')
 
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-        map('K', vim.lsp.buf.hover, 'Hover Documentation')
+        map('H', vim.lsp.buf.hover, 'Hover Documentation')
 
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 

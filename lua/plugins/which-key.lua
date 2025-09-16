@@ -13,7 +13,6 @@ return {
       { '<leader>gh', group = 'hunks' },
       { '<leader>q', group = 'quit/session' },
       { '<leader>s', group = 'search' },
-      { '<leader>w', group = 'windows' },
       { '<leader>x', group = 'diagnostics/quickfix' },
       { '[', group = 'prev' },
       { ']', group = 'next' },
