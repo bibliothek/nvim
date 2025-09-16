@@ -6,11 +6,15 @@ return {
     picker = {
       enabled = true,
     },
+    lazygit = {
+      enabled = true,
+    },
   },
   config = function(_, opts)
     require('snacks').setup(opts)
 
     local pick = require('snacks').picker
+    local lazygit = require('snacks').lazygit
 
     vim.keymap.set('n', '<leader>,', function() pick.buffers() end, { desc = 'Switch Buffer' })
     vim.keymap.set('n', '<leader><space>', function() pick.files() end, { desc = 'Find Files (Root Dir)' })
@@ -44,6 +48,7 @@ return {
     vim.keymap.set('n', '<leader>gR', '<cmd>Git reset --hard<cr>', { desc = 'Git Reset Hard' })
     vim.keymap.set('n', '<leader>gw', '<cmd>Git checkout .<cr>', { desc = 'Git Restore All' })
     vim.keymap.set('n', '<leader>gW', '<cmd>Git checkout %<cr>', { desc = 'Git Restore Current' })
+    vim.keymap.set('n', '<leader>gg', function() lazygit() end, { desc = 'Lazygit' })
 
     -- Search
     vim.keymap.set('n', '<leader>sc', function() pick.command_history() end, { desc = 'Command History' })
