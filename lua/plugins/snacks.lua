@@ -13,7 +13,6 @@ return {
     local pick = require('snacks').picker
 
     vim.keymap.set('n', '<leader>,', function() pick.buffers() end, { desc = 'Switch Buffer' })
-    vim.keymap.set('n', '<leader>/', function() pick.lines() end, { desc = 'Fuzzily search in current buffer' })
     vim.keymap.set('n', '<leader><space>', function() pick.files() end, { desc = 'Find Files (Root Dir)' })
     vim.keymap.set('n', '<leader>fb', function() pick.buffers() end, { desc = 'Buffers' })
     vim.keymap.set('n', '<leader>fc', function() pick.files({ cwd = vim.fn.stdpath('config') }) end, { desc = 'Find Config File' })
