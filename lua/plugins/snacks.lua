@@ -24,7 +24,6 @@ return {
     vim.keymap.set('n', '<leader>fF', function() pick.files({ hidden = true, ignored = true }) end, { desc = 'Find Files (cwd)' })
     vim.keymap.set('n', '<leader>fg', function() pick.git_files() end, { desc = 'Find Files (git-files)' })
     vim.keymap.set('n', '<leader>fr', function() pick.recent() end, { desc = 'Recent' })
-    vim.keymap.set('n', '<leader>fR', function() pick.recent({ cwd = true }) end, { desc = 'Recent (cwd)' })
 
     -- Buffer management
     vim.keymap.set('n', '<leader>bd', '<cmd>bd<cr>', { desc = 'Close Current Buffer' })
@@ -44,14 +43,14 @@ return {
     vim.keymap.set('n', '<leader>sd', function() pick.diagnostics() end, { desc = 'Document Diagnostics' })
     vim.keymap.set('n', '<leader>sD', function() pick.diagnostics({ workspace = true }) end, { desc = 'Workspace Diagnostics' })
     vim.keymap.set('n', '<leader>sg', function() pick.grep() end, { desc = 'Grep (Root Dir)' })
-    vim.keymap.set('n', '<leader>sG', function() pick.grep({ cwd = true }) end, { desc = 'Grep (cwd)' })
     vim.keymap.set('n', '<leader>sh', function() pick.help() end, { desc = 'Help Pages' })
     vim.keymap.set('n', '<leader>sH', function() pick.highlights() end, { desc = 'Search Highlight Groups' })
     vim.keymap.set('n', '<leader>sk', function() pick.keymaps() end, { desc = 'Key Maps' })
-    vim.keymap.set('n', '<leader>sl', function() pick.loclist() end, { desc = 'Location List' })
     vim.keymap.set('n', '<leader>sM', function() pick.man() end, { desc = 'Man Pages' })
-    vim.keymap.set('n', '<leader>so', function() pick.options() end, { desc = 'Options' })
-    vim.keymap.set('n', '<leader>sR', function() pick.resume() end, { desc = 'Resume' })
+    vim.keymap.set('n', '<leader>sr', function() pick.resume() end, { desc = 'Resume' })
     vim.keymap.set('n', '<leader>sq', function() pick.qflist() end, { desc = 'Quickfix List' })
+    vim.keymap.set('n', '<leader>ss', function() pick.lsp_symbols() end, { desc = 'Document Symbols' })
+    vim.keymap.set('n', '<leader>sS', function() pick.lsp_symbols({workspace = true}) end, { desc = 'Workspace Symbols' })
   end,
 }
+
