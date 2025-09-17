@@ -17,17 +17,29 @@ return {
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        map('gd', function() require('snacks').picker.lsp_definitions() end, '[G]oto [D]efinition')
+        map('gd', function()
+          require('snacks').picker.lsp_definitions()
+        end, '[G]oto [D]efinition')
 
-        map('gr', function() require('snacks').picker.lsp_references() end, '[G]oto [R]eferences')
+        map('gr', function()
+          require('snacks').picker.lsp_references()
+        end, '[G]oto [R]eferences')
 
-        map('gI', function() require('snacks').picker.lsp_implementations() end, '[G]oto [I]mplementation')
+        map('gI', function()
+          require('snacks').picker.lsp_implementations()
+        end, '[G]oto [I]mplementation')
 
-        map('<leader>D', function() require('snacks').picker.lsp_type_definitions() end, 'Type [D]efinition')
+        map('<leader>D', function()
+          require('snacks').picker.lsp_type_definitions()
+        end, 'Type [D]efinition')
 
-        map('<leader>cs', function() require('snacks').picker.lsp_symbols() end, '[C]ode [S]ymbols')
+        map('<leader>cs', function()
+          require('snacks').picker.lsp_symbols()
+        end, '[C]ode [S]ymbols')
 
-        map('gW', function() require('snacks').picker.lsp_symbols({ workspace = true }) end, '[W]orkspace Symbols')
+        map('gW', function()
+          require('snacks').picker.lsp_symbols { workspace = true }
+        end, '[W]orkspace Symbols')
 
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -98,9 +110,14 @@ return {
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
+      ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      automatic_installation = false,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
+          -- This handles overriding only values explicitly passed
+          -- by the server configuration above. Useful when disabling
+          -- certain features of an LSP (for example, turning off formatting for ts_ls)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
