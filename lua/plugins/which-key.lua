@@ -16,6 +16,8 @@ return {
       { '<leader>x', group = 'diagnostics/quickfix' },
       { '[', group = 'prev' },
       { ']', group = 'next' },
+      { ']h', desc = 'Next Git Hunk' },
+      { '[h', desc = 'Previous Git Hunk' },
       { 'g', group = 'goto' },
       { 'gs', group = 'surround' },
       { 'z', group = 'fold' },
