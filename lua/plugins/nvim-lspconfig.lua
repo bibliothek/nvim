@@ -87,7 +87,6 @@ return {
       powershell_es = {},
       helm_ls = {},
       yamlls = {},
-      fsautocomplete = {},
       csharp_ls = {},
       terraformls = {},
       lua_ls = {
