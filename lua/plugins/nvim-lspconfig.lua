@@ -92,6 +92,7 @@ return {
       helm_ls = {},
       csharp_ls = {},
       terraformls = {},
+      fsautocomplete = {},
       lua_ls = {
         settings = {
           Lua = {
