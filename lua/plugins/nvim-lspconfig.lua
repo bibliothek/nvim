@@ -73,7 +73,9 @@ return {
 
     local servers = {
       azure_pipelines_ls = {
-        root_dir = require('lspconfig').util.root_pattern '.git',
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+        end,
         settings = {
           yaml = {
             schemas = {
