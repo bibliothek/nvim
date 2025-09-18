@@ -82,6 +82,7 @@ return {
             schemas = {
               ['https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json'] = {
                 '**/azure-pipelines/**/*.y*l',
+                '**/azure-pipelines/*.y*l',
               },
             },
           },
