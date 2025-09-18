@@ -72,10 +72,10 @@ return {
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      pyright = {},
-      powershell_es = {},
-      helm_ls = {},
-      yamlls = {
+      azure_pipelines_ls = {
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+        end,
         settings = {
           yaml = {
             schemas = {
@@ -85,7 +85,11 @@ return {
             },
           },
         },
-			},
+      },
+      pyright = {},
+      powershell_es = {},
+      helm_ls = {},
+      yamlls = {},
       csharp_ls = {},
       terraformls = {},
       lua_ls = {
@@ -107,9 +111,11 @@ return {
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+    -- Set up servers directly with lspconfig
     for server_name, server_config in pairs(servers) do
-      vim.lsp.config(server_name, server_config)
-      vim.lsp.enable(server_name)
+      local server = vim.tbl_deep_extend('force', {}, server_config)
+      server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      require('lspconfig')[server_name].setup(server)
     end
   end,
 }
