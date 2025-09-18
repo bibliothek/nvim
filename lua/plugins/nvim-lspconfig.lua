@@ -74,6 +74,9 @@ return {
     local servers = {
       azure_pipelines_ls = {
         root_marker = { '.git' },
+        root_dir = function(fname)
+          return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+        end,
         settings = {
           yaml = {
             schemas = {
@@ -87,7 +90,6 @@ return {
       pyright = {},
       powershell_es = {},
       helm_ls = {},
-      yamlls = {},
       csharp_ls = {},
       terraformls = {},
       lua_ls = {
