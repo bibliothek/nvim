@@ -12,5 +12,11 @@ return {
     statusline.section_location = function()
       return '%2l:%-2v'
     end
+
+    ---@diagnostic disable-next-line: duplicate-set-field
+    statusline.section_filename = function()
+      local filename = vim.fn.expand('%:.')
+      return filename == '' and '[No Name]' or filename
+    end
   end,
 }
