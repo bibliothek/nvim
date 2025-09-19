@@ -52,6 +52,12 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Spaces
+vim.opt.expandtab = true     -- Use spaces instead of tabs
+vim.opt.tabstop = 4          -- Number of spaces that a tab counts for
+vim.opt.shiftwidth = 4       -- Number of spaces for each step of (auto)indent
+vim.opt.softtabstop = 4      -- Number of spaces that a tab counts for while editing
+
 -- Set pwsh on Windows
 if vim.fn.has 'win32' then
   vim.opt.shell = 'pwsh'
