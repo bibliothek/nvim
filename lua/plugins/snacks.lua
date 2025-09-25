@@ -17,10 +17,10 @@ return {
     local lazygit = require('snacks').lazygit
 
     vim.keymap.set('n', '<leader>,', function() pick.buffers() end, { desc = 'Switch Buffer' })
-    vim.keymap.set('n', '<leader><space>', function() pick.files() end, { desc = 'Find Files (Root Dir)' })
+    vim.keymap.set('n', '<leader><space>', function() pick.files({ hidden = true, ignored = true }) end, { desc = 'Find Files (Root Dir)' })
     vim.keymap.set('n', '<leader>fb', function() pick.buffers() end, { desc = 'Buffers' })
     vim.keymap.set('n', '<leader>fc', function() pick.files({ cwd = vim.fn.stdpath('config') }) end, { desc = 'Find Config File' })
-    vim.keymap.set('n', '<leader>ff', function() pick.files() end, { desc = 'Find Files (Root Dir)' })
+    vim.keymap.set('n', '<leader>ff', function() pick.files({ hidden = true, ignored = true }) end, { desc = 'Find Files (Root Dir)' })
     vim.keymap.set('n', '<leader>fF', function() pick.files({ hidden = true, ignored = true }) end, { desc = 'Find Files (cwd)' })
     vim.keymap.set('n', '<leader>fg', function() pick.git_files() end, { desc = 'Find Files (git-files)' })
     vim.keymap.set('n', '<leader>fr', function() pick.recent() end, { desc = 'Recent' })
