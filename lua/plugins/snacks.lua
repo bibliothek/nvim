@@ -5,6 +5,12 @@ return {
   opts = {
     picker = {
       enabled = true,
+      formatters = {
+        file = {
+          truncate = 120,
+          filename_first = true,
+        }
+      }
     },
     lazygit = {
       enabled = true,
