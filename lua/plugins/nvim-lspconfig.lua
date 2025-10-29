@@ -104,6 +104,7 @@ return {
       helm_ls = {},
       csharp_ls = {},
       terraformls = {},
+      jsonls = {},
       lua_ls = {
         settings = {
           Lua = {
