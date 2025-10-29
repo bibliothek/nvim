@@ -32,6 +32,8 @@ return {
 
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
+        map('<leader>F', vim.lsp.buf.format, '[F]ormat buffer')
+
         map('H', vim.lsp.buf.hover, 'Hover Documentation')
 
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
