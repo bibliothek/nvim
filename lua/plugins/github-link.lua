@@ -1,5 +1,5 @@
 return {
-  'k2589/getgithublink.nvim',
+  'bibliothek/getgithublink.nvim',
   event = 'VeryLazy',
   config = function()
     require('getgithublink').setup()
