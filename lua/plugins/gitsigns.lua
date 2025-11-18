@@ -33,6 +33,9 @@ return {
         return '<Ignore>'
       end, { expr = true, desc = 'Previous Git Hunk', buffer = bufnr })
 
+      -- Git blame
+      vim.keymap.set('n', '<leader>gB', gs.blame , { desc = 'Git blame', buffer = bufnr })
+
     end,
   }
 }
