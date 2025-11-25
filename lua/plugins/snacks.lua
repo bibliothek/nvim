@@ -49,6 +49,7 @@ return {
     vim.keymap.set('n', '<leader>sd', function() pick.diagnostics() end, { desc = 'Document Diagnostics' })
     vim.keymap.set('n', '<leader>sD', function() pick.diagnostics({ workspace = true }) end, { desc = 'Workspace Diagnostics' })
     vim.keymap.set('n', '<leader>/', function() pick.grep({ hidden = true }) end, { desc = 'Grep (Root Dir)' })
+    vim.keymap.set('n', '<leader>sw', function() pick.grep({ hidden = true, args = { "--vimgrep", "--smart-case", "-w" }}) end, { desc = 'Grep word (Root Dir)' })
     vim.keymap.set('n', '<leader>sh', function() pick.help() end, { desc = 'Help Pages' })
     vim.keymap.set('n', '<leader>sH', function() pick.highlights() end, { desc = 'Search Highlight Groups' })
     vim.keymap.set('n', '<leader>sk', function() pick.keymaps() end, { desc = 'Key Maps' })
