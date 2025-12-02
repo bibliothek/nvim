@@ -12,7 +12,7 @@ return {
       popup_border_style = "rounded",
       window = {
         position = "left",
-        width = 80,
+        width = 60,
       },
       default_component_configs = {
         indent = {
