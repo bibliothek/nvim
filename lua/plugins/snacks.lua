@@ -27,9 +27,9 @@ return {
     vim.keymap.set('n', '<leader>fb', function() pick.buffers() end, { desc = 'Buffers' })
     vim.keymap.set('n', '<leader>fc', function() pick.files({ cwd = vim.fn.stdpath('config') }) end, { desc = 'Find Config File' })
     vim.keymap.set('n', '<leader>ff', function() pick.files({ hidden = true, ignored = false}) end, { desc = 'Find Files (Root Dir)' })
-    vim.keymap.set('n', '<leader>fF', function() pick.files({ hidden = true, ignored = false }) end, { desc = 'Find Files (cwd)' })
     vim.keymap.set('n', '<leader>fg', function() pick.git_files() end, { desc = 'Find Files (git-files)' })
-    vim.keymap.set('n', '<leader>fr', function() pick.recent() end, { desc = 'Recent' })
+    vim.keymap.set('n', '<leader>fr', function() pick.recent({ filter = { cwd = true } }) end, { desc = 'Recent (CWD)' })
+    vim.keymap.set('n', '<leader>fR', function() pick.recent({ filter = { cwd = false } }) end, { desc = 'Recent' })
 
     -- Buffer management
     vim.keymap.set('n', '<leader>bd', '<cmd>bd<cr>', { desc = 'Close Current Buffer' })
