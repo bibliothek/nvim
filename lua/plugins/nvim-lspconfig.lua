@@ -105,6 +105,7 @@ return {
       },
       helm_ls = {},
       csharp_ls = {},
+      ts_ls = {},
       terraformls = {},
       jsonls = {},
       lua_ls = {
