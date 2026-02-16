@@ -33,3 +33,10 @@ vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Copy relative path
+vim.keymap.set("n", "<leader>cp", function()
+  local path = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
+  vim.fn.setreg('"', path)
+  vim.fn.setreg("+", path)
+end, { desc = "Copy Relative Path" })
+
