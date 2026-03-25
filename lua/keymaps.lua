@@ -40,3 +40,12 @@ vim.keymap.set("n", "<leader>cp", function()
   vim.fn.setreg("+", path)
 end, { desc = "Copy Relative Path" })
 
+-- Copy relative path with line number
+vim.keymap.set("n", "<leader>cP", function()
+  local path = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
+  local line = vim.fn.line(".")
+  local result = path .. ":" .. line
+  vim.fn.setreg('"', result)
+  vim.fn.setreg("+", result)
+end, { desc = "Copy Relative Path:Line" })
+
