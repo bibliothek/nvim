@@ -33,6 +33,10 @@ vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Tabs
+vim.keymap.set("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+vim.keymap.set("n", "<leader>td", "<cmd>tabclose<cr>", { desc = "Close Current Tab" })
+
 -- Copy relative path
 vim.keymap.set("n", "<leader>cp", function()
   local path = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
