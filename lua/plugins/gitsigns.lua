@@ -36,6 +36,9 @@ return {
       -- Git blame
       vim.keymap.set('n', '<leader>gB', gs.blame , { desc = 'Git blame', buffer = bufnr })
 
+      -- Inline diff (side-by-side in current tab)
+      vim.keymap.set('n', '<leader>gD', gs.diffthis, { desc = 'Diff against index', buffer = bufnr })
+
     end,
   }
 }
