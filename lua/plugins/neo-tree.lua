@@ -49,6 +49,22 @@ return {
           hide_dotfiles = false,
           hide_gitignored = false,
         },
+        commands = {
+          grep_in_dir = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            if node.type ~= "directory" then
+              path = vim.fn.fnamemodify(path, ":h")
+            end
+            require("neo-tree.command").execute({ action = "close" })
+            Snacks.picker.grep({ hidden = true, dirs = { path } })
+          end,
+        },
+        window = {
+          mappings = {
+            ["S"] = "grep_in_dir",
+          },
+        },
       },
     })
   end,
