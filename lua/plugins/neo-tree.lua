@@ -72,7 +72,7 @@ return {
     {
       "<leader>e",
       function()
-        require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        require("neo-tree.command").execute({ toggle = true })
       end,
       mode = "",
       desc = "Toggle File Tree",
