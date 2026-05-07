@@ -1,3 +1,6 @@
+-- Enable true color
+vim.opt.termguicolors = true
+
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
