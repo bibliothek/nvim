@@ -22,14 +22,16 @@ return {
     local pick = require('snacks').picker
     local lazygit = require('snacks').lazygit
 
-    vim.keymap.set('n', '<leader>,', function() pick.buffers() end, { desc = 'Switch Buffer' })
-    vim.keymap.set('n', '<leader><space>', function() pick.files({ hidden = true, ignored = false }) end, { desc = 'Find Files (Root Dir)' })
-    vim.keymap.set('n', '<leader>fb', function() pick.buffers() end, { desc = 'Buffers' })
-    vim.keymap.set('n', '<leader>fc', function() pick.files({ cwd = vim.fn.stdpath('config') }) end, { desc = 'Find Config File' })
-    vim.keymap.set('n', '<leader>ff', function() pick.files({ hidden = true, ignored = false}) end, { desc = 'Find Files (Root Dir)' })
-    vim.keymap.set('n', '<leader>fg', function() pick.git_files() end, { desc = 'Find Files (git-files)' })
-    vim.keymap.set('n', '<leader>fr', function() pick.recent({ filter = { cwd = true } }) end, { desc = 'Recent (CWD)' })
-    vim.keymap.set('n', '<leader>fR', function() pick.recent({ filter = { cwd = false } }) end, { desc = 'Recent' })
+    local no_preview = { layout = { hidden = { "preview" } } }
+
+    vim.keymap.set('n', '<leader>,', function() pick.buffers(no_preview) end, { desc = 'Switch Buffer' })
+    vim.keymap.set('n', '<leader><space>', function() pick.files(vim.tbl_extend("force", no_preview, { hidden = true, ignored = false })) end, { desc = 'Find Files (Root Dir)' })
+    vim.keymap.set('n', '<leader>fb', function() pick.buffers(no_preview) end, { desc = 'Buffers' })
+    vim.keymap.set('n', '<leader>fc', function() pick.files(vim.tbl_deep_extend("force", no_preview, { cwd = vim.fn.stdpath('config') })) end, { desc = 'Find Config File' })
+    vim.keymap.set('n', '<leader>ff', function() pick.files(vim.tbl_deep_extend("force", no_preview, { hidden = true, ignored = false })) end, { desc = 'Find Files (Root Dir)' })
+    vim.keymap.set('n', '<leader>fg', function() pick.git_files(no_preview) end, { desc = 'Find Files (git-files)' })
+    vim.keymap.set('n', '<leader>fr', function() pick.recent(vim.tbl_deep_extend("force", no_preview, { filter = { cwd = true } })) end, { desc = 'Recent (CWD)' })
+    vim.keymap.set('n', '<leader>fR', function() pick.recent(vim.tbl_deep_extend("force", no_preview, { filter = { cwd = false } })) end, { desc = 'Recent' })
 
     -- Buffer management
     vim.keymap.set('n', '<leader>bd', '<cmd>bd<cr>', { desc = 'Close Current Buffer' })
