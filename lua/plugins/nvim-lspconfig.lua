@@ -96,6 +96,23 @@ local servers = {
   },
   helm_ls = {},
   csharp_ls = {},
+  fsautocomplete = {
+    cmd = { 'fsautocomplete' },
+    cmd_env = { DOTNET_ROLL_FORWARD = 'LatestMajor' },
+    filetypes = { 'fsharp' },
+    root_markers = { '.git', '*.sln', '*.fsproj' },
+    init_options = {
+      AutomaticWorkspaceInit = true,
+    },
+    settings = {
+      FSharp = {
+        AutomaticWorkspaceInit = true,
+      },
+    },
+    on_attach = function(client)
+      client.server_capabilities.semanticTokensProvider = nil
+    end,
+  },
   ts_ls = {},
   terraformls = {},
   jsonls = {},

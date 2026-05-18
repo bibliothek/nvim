@@ -47,7 +47,6 @@ vim.pack.add({
   { src = 'https://github.com/bibliothek/getgithublink.nvim' },
 
   -- Language-specific
-  { src = 'https://github.com/ionide/Ionide-vim' },
   { src = 'https://github.com/qvalentin/helm-ls.nvim' },
 })
 
@@ -65,4 +64,4 @@ require 'plugins.mini'
 require 'plugins.gitsigns'
 require 'plugins.diffview'
 require 'plugins.github-link'
--- helm-ls, onenord, and ionide need no setup; they are simply on rtp.
+-- helm-ls and onenord need no setup; they are simply on rtp.
