@@ -16,8 +16,3 @@ vim.api.nvim_create_autocmd({ 'FocusLost', 'TextChanged', 'TextChangedI' }, {
   end,
 })
 
--- helm restart lsp
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'helm',
-  command = 'LspRestart',
-})
