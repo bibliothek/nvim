@@ -95,7 +95,6 @@ local servers = {
     end,
   },
   helm_ls = {},
-  csharp_ls = {},
   fsautocomplete = {
     cmd = { 'fsautocomplete' },
     cmd_env = { DOTNET_ROLL_FORWARD = 'LatestMajor' },
@@ -127,12 +126,18 @@ local servers = {
   },
 }
 
-require('mason').setup()
+require('mason').setup {
+  registries = {
+    'github:mason-org/mason-registry',
+    'github:Crashdummyy/mason-registry',
+  },
+}
 
 local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
   'stylua',
   'fsautocomplete',
+  'roslyn',
 })
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

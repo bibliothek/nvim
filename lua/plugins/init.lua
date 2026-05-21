@@ -48,6 +48,7 @@ vim.pack.add({
 
   -- Language-specific
   { src = 'https://github.com/qvalentin/helm-ls.nvim' },
+  { src = 'https://github.com/seblyng/roslyn.nvim' },
 })
 
 -- Now run each plugin's setup. Order matters where one setup depends on another
@@ -59,6 +60,7 @@ require 'plugins.neo-tree'
 require 'plugins.lazydev'
 require 'plugins.nvim-cmp'
 require 'plugins.nvim-lspconfig'
+require 'plugins.roslyn'
 require 'plugins.nvim-treesitter'
 require 'plugins.mini'
 require 'plugins.gitsigns'
