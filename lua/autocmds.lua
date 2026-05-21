@@ -7,6 +7,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- LspRestart command
+vim.api.nvim_create_user_command('LspRestart', function()
+  for _, c in ipairs(vim.lsp.get_clients()) do
+    c:stop()
+  end
+end, { desc = 'Restart all LSP clients' })
+
 -- Autosave
 vim.api.nvim_create_autocmd({ 'FocusLost', 'TextChanged', 'TextChangedI' }, {
   desc = 'Autosave on TextChanged or FocusLost',
