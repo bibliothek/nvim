@@ -52,5 +52,4 @@ vim.keymap.set('n', '<leader>sk', function() pick.keymaps() end, { desc = 'Key M
 vim.keymap.set('n', '<leader>sM', function() pick.man() end, { desc = 'Man Pages' })
 vim.keymap.set('n', '<leader>sr', function() pick.resume() end, { desc = 'Resume' })
 vim.keymap.set('n', '<leader>sq', function() pick.qflist() end, { desc = 'Quickfix List' })
-vim.keymap.set('n', '<leader>ss', function() pick.lsp_symbols() end, { desc = 'Document Symbols' })
-vim.keymap.set('n', '<leader>sS', function() pick.lsp_symbols({ workspace = true }) end, { desc = 'Workspace Symbols' })
+vim.keymap.set('n', '<leader>ss', function() pick.lsp_symbols({ workspace = true }) end, { desc = 'Workspace Symbols' })

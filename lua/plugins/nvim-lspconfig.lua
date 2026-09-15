@@ -9,19 +9,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
       require('snacks').picker.lsp_definitions()
     end, '[G]oto [D]efinition')
 
-    map('gr', function()
+    map('grr', function()
       require('snacks').picker.lsp_references()
     end, '[G]oto [R]eferences')
 
-    map('gI', function()
+    map('gri', function()
       require('snacks').picker.lsp_implementations()
     end, '[G]oto [I]mplementation')
 
-    map('<leader>D', function()
+    map('grt', function()
       require('snacks').picker.lsp_type_definitions()
     end, 'Type [D]efinition')
 
-    map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    map('gO', function()
+      require('snacks').picker.lsp_symbols()
+    end, 'Document [O]utline')
 
     map('<leader>F', vim.lsp.buf.format, '[F]ormat buffer')
 
