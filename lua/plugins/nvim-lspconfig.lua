@@ -1,35 +1,42 @@
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
   callback = function(event)
-    local map = function(keys, func, desc)
-      vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    local map = function(keys, func, desc, mode)
+      vim.keymap.set(mode or 'n', keys, func, { buffer = event.buf, desc = desc })
     end
 
     map('gd', function()
       require('snacks').picker.lsp_definitions()
-    end, '[G]oto [D]efinition')
+    end, 'Goto Definition')
 
     map('grr', function()
       require('snacks').picker.lsp_references()
-    end, '[G]oto [R]eferences')
+    end, 'Goto References')
 
     map('gri', function()
       require('snacks').picker.lsp_implementations()
-    end, '[G]oto [I]mplementation')
+    end, 'Goto Implementation')
 
     map('grt', function()
       require('snacks').picker.lsp_type_definitions()
-    end, 'Type [D]efinition')
+    end, 'Goto Type Definition')
 
     map('gO', function()
       require('snacks').picker.lsp_symbols()
-    end, 'Document [O]utline')
+    end, 'Document Symbols')
 
-    map('<leader>F', vim.lsp.buf.format, '[F]ormat buffer')
+    map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+
+    -- Override the Neovim defaults so their descriptions match the rest
+    map('grn', vim.lsp.buf.rename, 'Rename')
+
+    map('gra', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
+
+    map('grx', vim.lsp.codelens.run, 'Run Codelens')
+
+    map('<leader>F', vim.lsp.buf.format, 'Format Buffer')
 
     map('H', vim.lsp.buf.hover, 'Hover Documentation')
-
-    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client.server_capabilities.documentHighlightProvider then
@@ -58,7 +65,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
       map('<leader>H', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-      end, 'Toggle Inlay [H]ints')
+      end, 'Toggle Inlay Hints')
     end
   end,
 })
