@@ -17,12 +17,12 @@ require('neo-tree').setup({
     last_modified = { enabled = false },
   },
   event_handlers = {
-    {
-      event = 'file_opened',
-      handler = function()
-        require('neo-tree.command').execute({ action = 'close' })
-      end,
-    },
+    -- {
+    --   event = 'file_opened',
+    --   handler = function()
+    --     require('neo-tree.command').execute({ action = 'close' })
+    --   end,
+    -- },
   },
   filesystem = {
     follow_current_file = {
